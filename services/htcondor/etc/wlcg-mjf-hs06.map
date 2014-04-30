@@ -1,0 +1,13 @@
+# This file must contain the mapping from CPUID to HS06
+# if the HS06 is not explicity set in the config file.
+#
+# The file in git contains a couple example lines
+# The site is expected to replace them with values
+# appropriate for their setup.
+#
+# The semantics is
+# "CPUID" HS06NUM
+#
+
+"Intel(R) Xeon(R) CPU           X5650  @ 2.67GHz" 213
+

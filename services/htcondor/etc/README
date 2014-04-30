@@ -1,0 +1,35 @@
+The htcondor JobMachineFeatures services package
+contains both the software and the configuration templates
+needed to add MJF features to a HTCondor pool.
+
+This etc subdirectory contains the configuration templates
+used by the module.
+
+There are two files:
+*) wlcg-mjf-htcondor.config
+*) wlcg-mjf-hs06.map
+
+Both should be copied into the /etc directory of all worker nodes,
+after being properly customized.
+
+The aim is to allow a site admin to use 
+the same identical file on all the worker nodes,
+but a site admin can choose to make node-by-node
+config changes as well.
+
+wlcg-mjf-htcondor.config
+========================
+This is the main config file.
+There is generally no need to modify this,
+unless you want to override autodetection.
+
+
+wlcg-mjf-hs06.map
+=================
+This file is used to estimate the HS06 number,
+based on the processor model number.
+The file in the repository is just a template;
+the site admin must populate it with the values
+appropriate to the HW it is operating.
+ 
+

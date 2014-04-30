@@ -1,0 +1,11 @@
+The htcondor JobMachineFeatures services package
+contains both the software and the configuration templates
+needed to add MJF features to a HTCondor pool.
+
+The module has two parts:
+*) src/ contains the code to be used by HTCondor
+*) etc/ contains the configuration templates
+          used by the code above
+
+See the README in each section on how to use the content.
+

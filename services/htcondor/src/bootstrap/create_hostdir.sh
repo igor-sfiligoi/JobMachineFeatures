@@ -6,9 +6,9 @@ CFG=/etc/wlcg-mjf-htcondor.config
 # Find the directory
 #
 
-MACHINEFEATURE=`awk '/^MACHINEFEATURE=/{split($0,a,"="); print a[2];}' $CFG`
-if [ -z "$MACHINEFEATURE" ]; then
-  echo "Could not find the MACHINEFEATURE param in $CFG" 1>&2
+MACHINEFEATURES=`awk '/^MACHINEFEATURES=/{split($0,a,"="); print a[2];}' $CFG`
+if [ -z "$MACHINEFEATURES" ]; then
+  echo "Could not find the MACHINEFEATURES param in $CFG" 1>&2
   exit 1
 fi
 
@@ -72,16 +72,16 @@ fi
 #
 
 umask 0022
-if [ ! -d $MACHINEFEATURE ]; then
-  mkdir -p $MACHINEFEATURE && chmod 0755 $MACHINEFEATURE
+if [ ! -d $MACHINEFEATURES ]; then
+  mkdir -p $MACHINEFEATURES && chmod 0755 $MACHINEFEATURES
   if [ $? -ne 0 ]; then
-    echo "Failed to create $MACHINEFEATURE"1>&2
+    echo "Failed to create $MACHINEFEATURES"1>&2
     exit 2
   fi
 fi
 
-echo ${NUM_CPUS} > $MACHINEFEATURE/log_cores 
-echo ${NUM_HT_CPUS} > $MACHINEFEATURE/phys_cores 
-echo ${NUM_SLOTS} > $MACHINEFEATURE/jobslots
-echo ${HS06} > $MACHINEFEATURE/hs06
+echo ${NUM_CPUS} > $MACHINEFEATURES/log_cores 
+echo ${NUM_HT_CPUS} > $MACHINEFEATURES/phys_cores 
+echo ${NUM_SLOTS} > $MACHINEFEATURES/jobslots
+echo ${HS06} > $MACHINEFEATURES/hs06
 

@@ -7,5 +7,23 @@ The module has two parts:
 *) etc/ contains the configuration templates
           used by the code above
 
-See the README in each section on how to use the content.
+Here are summary instructions on how to use it:
+0) get files from github
+1) put etc/wlcg-mjf-htcondor.config into /etc
+   on all worker nodes
+   (no customizations should be needed)
+2) create a customized version of etc/wlcg-mjf-hs06.map
+   (possibly using the file in github as a starting point)
+   and put it in /etc on all worker nodes
+3) put src/bootstrap/create_hostdir.sh
+   in some system area, e.g. /usr/local/sbin
+   run it once
+   and also add it to the boot sequence
+4) put src/wrapper/set_job_env.source.sh
+   in some system area, e.g. /usr/local/libexec
+   and configure HTCondor to source it in 
+   the USER_JOB_WRAPPER used by the system setup
+
+See the README in each section for more details.
+
 

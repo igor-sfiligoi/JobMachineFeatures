@@ -14,7 +14,7 @@ if [ ! -z "$MACHINEFEATURES" ]; then
 LOCALJOBFEATURES=`awk '/^JOBFEATURES=/{split($0,a,"="); print a[2];}' ${WLCG_MJF_CFG}`
 if [ -z "$LOCALJOBFEATURES" ]; then
     # easy to pick a valid default
-    LOCALJOBFEATURES=wlcg-mjf-htcondor
+    LOCALJOBFEATURES=wlcg-mjf-job-features
 fi
 
 JOBFEATURES="${PWD}/${LOCALJOBFEATURES}"
@@ -77,6 +77,25 @@ echo 1 > "${JOBFEATURES}/cpufactor_lrms"
 
 ################################# JOB FEATURES #####################
 export JOBFEATURES
+
+LOCALJOBSTATUS=`awk '/^JOBSTATUS=/{split($0,a,"="); print a[2];}' ${WLCG_MJF_CFG}`
+if [ -z "$LOCALJOBSTATUS" ]; then
+    # easy to pick a valid default
+    LOCALJOBSTATUS=wlcg-rmjf-job-status
+fi
+
+JOBSTATUS="${PWD}/${LOCALJOBSTATUS}"
+mkdir "${JOBSTATUS}"
+if [ $? -eq 0 ]; then
+################################# JOB STATUS #####################
+
+# make sure it is world readable
+chmod 0755 "${JOBSTATUS}"
+
+################################# JOB STATUS #####################
+export JOBSTATUS
+fi # if jobstatus created
+
 fi # if jobfeatures created
 
 ################################# MACHINE FEATURES #####################

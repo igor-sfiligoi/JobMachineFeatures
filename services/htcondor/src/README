@@ -1,0 +1,24 @@
+The htcondor JobMachineFeatures services package
+contains both the software and the configuration templates
+needed to add MJF features to a HTCondor pool.
+
+This src subdirectory contains the code to be used by HTCondor.
+
+It contains 2 subdirectories:
+*) bootstrap/ contains the code to configure the node
+*) wrapper/   contains the code needed at each job startup
+
+Here are summary instructions on how they are to be used:
+0) properly configure the node config files
+1) put bootstrap/create_hostdir.sh
+   in some system area, e.g. /usr/local/sbin
+   run it once
+   and also add it to the boot sequence
+2) put wrapper/set_job_env.source.sh
+   in some system area, e.g. /usr/local/libexec
+   and configure HTCondor to source it in 
+   the USER_JOB_WRAPPER used by the system setup
+
+See the README in each section for more details.
+
+

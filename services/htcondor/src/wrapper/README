@@ -1,0 +1,27 @@
+The htcondor JobMachineFeatures services package
+contains both the software and the configuration templates
+needed to add MJF features to a HTCondor pool.
+
+This subdirectory contains the code needed at each job startup.
+
+There is only one file at this time:
+*) set_job_env.source.sh
+
+It should be copied in some system area, 
+e.g. /usr/local/libexec
+and sourced as part of the 
+HTCondor's USER_JOB_WRAPPER bash-based script (not included).
+
+set_job_env.source.sh
+========================
+This script parses the configuration files,
+creates the necessary directories and files,
+and sets the environment variables as per the
+JobMachineFeatures specification, i.e.
+MACHINEFEATURES, JOBFEATURES and JOBSTATUS 
+
+More details can be found at
+https://twiki.cern.ch/twiki/bin/view/LCG/WMTEGEnvironmentVariables
+
+If any problems are detected, the env variables will not be set.
+

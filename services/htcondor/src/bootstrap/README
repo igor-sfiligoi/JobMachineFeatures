@@ -1,0 +1,29 @@
+The htcondor JobMachineFeatures services package
+contains both the software and the configuration templates
+needed to add MJF features to a HTCondor pool.
+
+This subdirectory contains the  code to configure the node.
+
+There is only one file at this time:
+*) create_hostdir.sh
+
+It should be copied in some system area, e.g. /usr/local/sbin
+run it once and also added to the boot sequence.
+
+create_hostdir.sh
+========================
+This script parses the configuration files and creates
+the directories and files that describe the host.
+
+It autodetection is enabled (the default), it will fail
+if some of the values cannot be determined.
+
+There are two typical failure modes:
+a) Cannot determine the HTCondor properties,
+   e.g. if HTCondor is not properly installed
+b) Cannot determine the HS06 value,
+   e.g. if the CPU model is not listed in the mapfile
+ 
+Please notice that successful completion is needed
+for the package to work.
+
